@@ -1,6 +1,6 @@
 # Strip or add trailing slash
 
-Banish or enforce trailing slashes with Netlify edge functions.
+Banish or enforce trailing slashes with Netlify edge functions. [Demo](https://trailing-slash-edge.netlify.app/)
 
 ## Usage
 
