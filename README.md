@@ -12,13 +12,15 @@ Copy the appropriate function from [`/lib/`](https://github.com/ascorbic/slash-e
 
 ### Import from URL
 
-Create a handler and import the function from deno.land/x:
+Create a handler your site's `/netlify/edge-functions/` directory and export the function from deno.land/x:
 
 ```typescript
+// /netlify/edge-functions/strip-slash.ts
+
 export { stripSlash as default } from 'https://deno.land/x/slash_handler/mod.ts'
 ```
 
-- Add a declaration to your site's `netlify.toml`:
+After creating the function, you then need to add a declaration to your site's `netlify.toml`:
 
 ```toml
 [[edge_functions]]
