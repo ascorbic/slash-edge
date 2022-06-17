@@ -3,4 +3,8 @@ publish = "public"
 
 [[edge_functions]]
 function = "strip-slash"
-path = "/*"
+path = "/strip-slashes*"
+
+[[edge_functions]]
+function = "add-slash"
+path = "/add-slashes*"

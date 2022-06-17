@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strip trailing slashes</title>
+    <title>Fix trailing slashes</title>
     <style>
         body {
             font-family: sans-serif;
@@ -14,18 +14,44 @@
 </head>
 
 <body>
-    <p>This site demonstrates using an edge function to strip trailing slashes and .html</p>
+    <p>This site demonstrates using an edge function to add or strip trailing slashes and strip .html</p>
     <p>These should all redirect to the slashless version</p>
     <ul>
-        <li><a href='/toplevel'>/toplevel</a></li>
-        <li><a href='/toplevel.html'>/toplevel.html</a></li>
-        <li><a href='/toplevel/'>/toplevel/</a></li>
-        <li><a href='/subdirectory'>/subdirectory</a></li>
-        <li><a href='/subdirectory/'>/subdirectory/</a></li>
-        <li><a href='/subdirectory/index.html'>/subdirectory/sublevel/index.html</a></li>
-        <li><a href='/subdirectory/sublevel'>/subdirectory/sublevel</a></li>
-        <li><a href='/subdirectory/sublevel.html'>/subdirectory/sublevel.html</a></li>
-        <li><a href='/subdirectory/sublevel/'>/subdirectory/sublevel/</a></li>
+        <li><a href='/strip-slashes'>/strip-slashes</a></li>
+        <li><a href='/strip-slashes/'>/strip-slashes/</a></li>
+        <li><a href='/strip-slashes/index.html'>/strip-slashes/index.html</a></li>
+        <li><a href='/strip-slashes/toplevel'>/strip-slashes/toplevel</a></li>
+        <li><a href='/strip-slashes/toplevel.html'>/strip-slashes/toplevel.html</a></li>
+        <li><a href='/strip-slashes/toplevel/'>/strip-slashes/toplevel/</a></li>
+        <li><a href='/strip-slashes/subdirectory'>/strip-slashes/subdirectory</a></li>
+        <li><a href='/strip-slashes/subdirectory.html'>/strip-slashes/subdirectory.html</a></li>
+        <li><a href='/strip-slashes/subdirectory/'>/strip-slashes/subdirectory/</a></li>
+        <li><a
+                href='/strip-slashes/subdirectory/sublevel/index.html'>/strip-slashes/subdirectory/sublevel/index.html</a>
+        </li>
+        <li><a href='/strip-slashes/subdirectory/sublevel'>/strip-slashes/subdirectory/sublevel</a></li>
+        <li><a href='/strip-slashes/subdirectory/sublevel.html'>/strip-slashes/subdirectory/sublevel.html</a></li>
+        <li><a href='/strip-slashes/subdirectory/sublevel/'>/strip-slashes/subdirectory/sublevel/</a></li>
+        <li><a href='/strip-slashes/deer.webp'>/strip-slashes/deer.webp</a> - should ignore</li>
+    </ul>
+    <p>These should all redirect to the version with a slash</p>
+    <ul>
+        <li><a href='/add-slashes'>/add-slashes</a></li>
+        <li><a href='/add-slashes/'>/add-slashes/</a></li>
+        <li><a href='/add-slashes/index.html'>/add-slashes/index.html</a></li>
+        <li><a href='/add-slashes/toplevel'>/add-slashes/toplevel</a></li>
+        <li><a href='/add-slashes/toplevel.html'>/add-slashes/toplevel.html</a></li>
+        <li><a href='/add-slashes/toplevel/'>/add-slashes/toplevel/</a></li>
+        <li><a href='/add-slashes/subdirectory'>/add-slashes/subdirectory</a></li>
+        <li><a href='/add-slashes/subdirectory.html'>/add-slashes/subdirectory.html</a></li>
+        <li><a href='/add-slashes/subdirectory/'>/add-slashes/subdirectory/</a></li>
+        <li><a href='/add-slashes/subdirectory/sublevel/index.html'>/add-slashes/subdirectory/sublevel/index.html</a>
+        </li>
+        <li><a href='/add-slashes/subdirectory/sublevel'>/add-slashes/subdirectory/sublevel</a></li>
+        <li><a href='/add-slashes/subdirectory/sublevel.html'>/add-slashes/subdirectory/sublevel.html</a></li>
+        <li><a href='/add-slashes/subdirectory/sublevel/'>/add-slashes/subdirectory/sublevel/</a></li>
+        <li><a href='/add-slashes/deer.webp'>/add-slashes/deer.webp</a> - should ignore</li>
+
     </ul>
     <p><a href="http://github.com/ascorbic/slash-edge">GitHub</a></p>
 </body>
