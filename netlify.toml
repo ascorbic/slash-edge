@@ -1,2 +1,6 @@
 [build]
 publish = "public"
+
+[[edge_functions]]
+function = "slash"
+path = "/*"
