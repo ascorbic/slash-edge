@@ -14,15 +14,17 @@
 </head>
 
 <body>
-    <p>This site demonstrates using an edge function to strip trailing slashes</p>
+    <p>This site demonstrates using an edge function to strip trailing slashes and .html</p>
     <p>These should all redirect to the slashless version</p>
     <ul>
         <li><a href='/toplevel'>/toplevel</a></li>
+        <li><a href='/toplevel.html'>/toplevel.html</a></li>
         <li><a href='/toplevel/'>/toplevel/</a></li>
         <li><a href='/subdirectory'>/subdirectory</a></li>
         <li><a href='/subdirectory/'>/subdirectory/</a></li>
-        <li><a href='/subdirectory/index.html'>/subdirectory/sublevel/index.html</a> (does not redirect)</li>
+        <li><a href='/subdirectory/index.html'>/subdirectory/sublevel/index.html</a></li>
         <li><a href='/subdirectory/sublevel'>/subdirectory/sublevel</a></li>
+        <li><a href='/subdirectory/sublevel.html'>/subdirectory/sublevel.html</a></li>
         <li><a href='/subdirectory/sublevel/'>/subdirectory/sublevel/</a></li>
     </ul>
     <p><a href="http://github.com/ascorbic/slash-edge">GitHub</a></p>

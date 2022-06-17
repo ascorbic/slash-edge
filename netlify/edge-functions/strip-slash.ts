@@ -8,9 +8,11 @@ export default async function handler(request: Request, context: Context) {
     return
   }
 
-  // Redirect to remove the trailing slash
-  if (pathname.endsWith('/')) {
-    return Response.redirect(request.url.slice(0, -1), 301)
+  // Redirect to remove the trailing slash or .html
+  for (const suffix of ['/', '/index.html', '.html']) {
+    if (pathname.endsWith(suffix)) {
+      return Response.redirect(request.url.slice(0, -suffix.length), 301)
+    }
   }
 
   const response = await context.next({ sendConditionalRequest: true })
