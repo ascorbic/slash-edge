@@ -2,7 +2,8 @@
   "deno.enable": true,
   "deno.enablePaths": [
     "netlify/edge-functions",
-    "mod.ts"
+    "mod.ts",
+    "lib"
   ],
   "deno.importMap": ".netlify/edge-functions-import-map.json"
 }
