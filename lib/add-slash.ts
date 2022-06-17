@@ -3,8 +3,8 @@ import { Context } from 'netlify:edge'
 export default async function handler(request: Request, context: Context) {
   const { pathname } = new URL(request.url)
 
-  // Skip if it already ends with a slash, or if we're already proxying the request
-  if (pathname.endsWith('/') || request.headers.get('x-nf-subrequest')) {
+  // Skip if we're already proxying the request
+  if (request.headers.get('x-nf-subrequest')) {
     return
   }
 
@@ -23,6 +23,7 @@ export default async function handler(request: Request, context: Context) {
   const response = await context.next({ sendConditionalRequest: true })
 
   // If origin returns a 301 we need to proxy it to avoid a redirect loop
+  // TODO: check that this is just a redirect to the canonical URL, not some other kind
   if (response.status === 301) {
     const location = response.headers.get('Location')
     const proxyTo = new URL(location || '', request.url).toString()
