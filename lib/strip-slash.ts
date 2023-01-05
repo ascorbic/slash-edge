@@ -1,8 +1,8 @@
-import { Context } from 'netlify:edge'
+import { Context } from 'https://edge.netlify.com'
 
 export default async function handler(request: Request, context: Context) {
   const { pathname } = new URL(request.url)
-
+  console.log('strip slash', pathname)
   // Skip for root, or if we're already proxying the request
   if (pathname === '/' || request.headers.get('x-nf-subrequest')) {
     return
