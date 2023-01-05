@@ -1,4 +1,4 @@
-import { Context } from 'netlify:edge'
+import { Context } from 'https://edge.netlify.com'
 
 export default async function handler(request: Request, context: Context) {
   const { pathname } = new URL(request.url)
@@ -21,18 +21,13 @@ export default async function handler(request: Request, context: Context) {
   }
 
   const response = await context.next({ sendConditionalRequest: true })
-
   // If origin returns a 301 we need to proxy it to avoid a redirect loop
   // TODO: check that this is just a redirect to the canonical URL, not some other kind
   if (response.status === 301) {
     const location = response.headers.get('Location')
-    const proxyTo = new URL(location || '', request.url).toString()
-    const headers = new Headers(request.headers)
     // Avoid infinite loops
-    headers.set('x-nf-subrequest', '1')
-    return fetch(proxyTo, {
-      headers,
-    })
+    request.headers.set('x-nf-subrequest', '1')
+    return context.rewrite(new URL(location || '', request.url).toString())
   }
   return response
 }
