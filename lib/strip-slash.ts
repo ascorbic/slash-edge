@@ -1,14 +1,14 @@
-import { Context } from "https://edge.netlify.com";
+import { Context } from 'https://edge.netlify.com';
 
 export default async function handler(request: Request, context: Context) {
   const { pathname } = new URL(request.url);
   // Skip for root, or if we're already proxying the request
-  if (pathname === "/" || request.headers.get("x-nf-subrequest")) {
+  if (pathname === '/' || request.headers.get('x-nf-subrequest')) {
     return;
   }
 
   // Redirect to remove the trailing slash or .html
-  for (const suffix of ["/", "/index.html", ".html"]) {
+  for (const suffix of ['/', '/index.html', '.html']) {
     if (pathname.endsWith(suffix)) {
       return Response.redirect(request.url.slice(0, -suffix.length), 301);
     }
@@ -17,11 +17,11 @@ export default async function handler(request: Request, context: Context) {
   const response = await context.next({ sendConditionalRequest: true });
 
   // If origin returns a 301 we need to proxy it to avoid a redirect loop
-  if (response.status === 301 && pathname.endsWith("/")) {
-    const location = response.headers.get("Location");
+  if (response.status === 301 && pathname.endsWith('/')) {
+    const location = response.headers.get('Location');
     // Avoid infinite loops
-    request.headers.set("x-nf-subrequest", "1");
-    return context.rewrite(new URL(location || "", request.url).toString());
+    request.headers.set('x-nf-subrequest', '1');
+    return context.rewrite(new URL(location || '', request.url).toString());
   }
 
   return response;
